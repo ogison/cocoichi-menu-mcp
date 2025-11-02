@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cocoichi-menu-mcp"
+version = "0.1.0"
+description = "MCP server for Coco Ichibanya menu access"
+authors = [
+  { name = "Coco Ichibanya MCP" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.111.0",
+  "uvicorn[standard]>=0.23.0",
+  "pdfminer.six>=20221105",
+  "pydantic>=2.6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4.0",
+  "httpx>=0.27.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
