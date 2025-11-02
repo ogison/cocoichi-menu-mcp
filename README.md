@@ -2,13 +2,19 @@
 
 CoCo壱番屋（カレーハウスCoCo壱）公式メニューブックをModel Context Protocol (MCP) サーバーとして提供するローカルツール。
 
-## セットアップと起動
+## セットアップ
 
 ```bash
-uv run python -m cocoichi_menu.server
+npm install
 ```
 
-`FastMCPServer` が標準入出力上で起動し、`menu` テキストリソースを公開します。起動後に `modelcontextprotocol` が提供する `mcp` CLI や各種対応クライアントから `list-resources` / `read-resource` を実行すると、公開中のメニューが取得できます。ログにはアクセスのたびに `Providing CocoICHI menu resource` が出力されます。
+## 起動
+
+```bash
+npm run start
+```
+
+`@modelcontextprotocol/sdk` を利用した MCP サーバーが標準入出力上で起動し、`menu` テキストリソースを公開します。起動後に `modelcontextprotocol` が提供する `mcp` CLI や各種対応クライアントから `list-resources` / `read-resource` を実行すると、公開中のメニューが取得できます。アクセスのたびに標準出力へログが表示されます。
 
 ## クライアント設定例
 
@@ -16,12 +22,11 @@ uv run python -m cocoichi_menu.server
 
 ```json
 {
-  "command": "uv",
+  "command": "npm",
   "args": [
     "run",
-    "python",
-    "-m",
-    "cocoichi_menu.server"
+    "start",
+    "--"
   ]
 }
 ```
