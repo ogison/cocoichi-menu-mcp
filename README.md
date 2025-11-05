@@ -2,6 +2,11 @@
 
 CoCo 壱番屋（カレーハウス CoCo 壱番屋）のメニューブックを Model Context Protocol (MCP) サーバーとして提供するローカルツールです。
 
+## 免責事項
+
+- 本リポジトリおよびツールは非公式であり、株式会社壱番屋とは関係ありません。
+- メニューデータは [公式メニューブック（PDF）](https://www.ichibanya.co.jp/menu/pdf/menubook_regular.pdf) を参考にしています。
+
 ## 1. リポジトリのクローン
 
 ```
