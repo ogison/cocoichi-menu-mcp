@@ -7,90 +7,7 @@ import {
   ListToolsRequestSchema,
   Tool,
 } from "npm:@modelcontextprotocol/sdk@1.5.0/types.js";
-
-type MenuItem = {
-  id: string;
-  name: string;
-  price: number;
-  spiceLevels: string[];
-  options: string[];
-};
-
-type MenuCategory = {
-  id: string;
-  name: string;
-  items: MenuItem[];
-};
-
-const menuData: MenuCategory[] = [
-  {
-    id: "curry",
-    name: "カレーライス",
-    items: [
-      {
-        id: "pork-curry",
-        name: "ポークカレー",
-        price: 580,
-        spiceLevels: ["普通", "1辛", "2辛", "3辛"],
-        options: ["ライス量変更", "トッピング追加"],
-      },
-      {
-        id: "cheese-curry",
-        name: "チーズカレー",
-        price: 690,
-        spiceLevels: ["普通", "1辛", "2辛", "3辛"],
-        options: ["ライス量変更", "トッピング追加"],
-      },
-      {
-        id: "beef-curry",
-        name: "ビーフカレー",
-        price: 720,
-        spiceLevels: ["普通", "1辛", "2辛", "3辛"],
-        options: ["ライス量変更", "トッピング追加"],
-      },
-    ],
-  },
-  {
-    id: "topping",
-    name: "トッピング",
-    items: [
-      {
-        id: "spinach",
-        name: "ほうれん草",
-        price: 200,
-        spiceLevels: [],
-        options: ["単品追加"],
-      },
-      {
-        id: "sausage",
-        name: "ソーセージ",
-        price: 250,
-        spiceLevels: [],
-        options: ["単品追加"],
-      },
-      {
-        id: "cheese-topping",
-        name: "チーズ",
-        price: 230,
-        spiceLevels: [],
-        options: ["単品追加"],
-      },
-    ],
-  },
-  {
-    id: "set",
-    name: "セットメニュー",
-    items: [
-      {
-        id: "cheese-hamburg",
-        name: "チーズハンバーグカレー",
-        price: 830,
-        spiceLevels: ["普通", "1辛", "2辛"],
-        options: ["ライス量変更", "サラダ追加"],
-      },
-    ],
-  },
-];
+import { menuData, type MenuCategory, type MenuItem } from "../data/menu.ts";
 
 const TOOLS: Tool[] = [
   {
@@ -133,11 +50,6 @@ const TOOLS: Tool[] = [
   },
 ];
 
-const toolRegistry = TOOLS.reduce<Record<string, Tool>>((acc, tool) => {
-  acc[tool.name] = tool;
-  return acc;
-}, {});
-
 const server = new Server(
   {
     name: "cocoichi-menu-mcp",
@@ -157,11 +69,16 @@ server.setRequestHandler(ListResourcesRequestSchema, () => ({
 
 server.setRequestHandler(ListToolsRequestSchema, () => ({ tools: TOOLS }));
 
-const findMenuItemByName = (name: string) => {
+const findMenuItemByName = (
+  name: string,
+): { category: MenuCategory; item: MenuItem } | null => {
   const normalized = name.trim().toLowerCase();
   for (const category of menuData) {
     for (const item of category.items) {
-      if (item.name.trim().toLowerCase() === normalized) {
+      const matchesJapanese = item.name.trim().toLowerCase() === normalized;
+      const matchesEnglish =
+        item.englishName?.trim().toLowerCase() === normalized;
+      if (matchesJapanese || matchesEnglish) {
         return { category, item };
       }
     }
@@ -177,7 +94,12 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
     case "listMenu": {
       const categories = menuData.map((category) => ({
         name: category.name,
-        items: category.items.map((item) => item.name),
+        items: category.items.map((item) => ({
+          name: item.name,
+          englishName: item.englishName,
+          price: item.price,
+          detailUrl: item.detailUrl,
+        })),
       }));
       return {
         content: [
@@ -215,6 +137,8 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         price: match.item.price,
         spiceLevels: match.item.spiceLevels,
         options: match.item.options,
+        englishName: match.item.englishName,
+        detailUrl: match.item.detailUrl,
       };
       return {
         content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
@@ -252,6 +176,9 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         .filter(({ category, item }) => {
           const matchesKeyword =
             item.name.toLowerCase().includes(normalizedKeyword) ||
+            (item.englishName
+              ? item.englishName.toLowerCase().includes(normalizedKeyword)
+              : false) ||
             item.options.some((o) =>
               o.toLowerCase().includes(normalizedKeyword)
             );
@@ -263,7 +190,13 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
             priceMax !== undefined ? item.price <= priceMax : true;
           return matchesKeyword && matchesCategory && matchesPrice;
         })
-        .map(({ item }) => ({ name: item.name, price: item.price }));
+        .map(({ category, item }) => ({
+          name: item.name,
+          englishName: item.englishName,
+          category: category.name,
+          price: item.price,
+          detailUrl: item.detailUrl,
+        }));
 
       return {
         content: [{ type: "text", text: JSON.stringify({ results }, null, 2) }],
