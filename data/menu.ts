@@ -4,8 +4,6 @@ export type MenuItem = {
   englishName: string | null;
   price: number;
   detailUrl: string;
-  spiceLevels: string[];
-  options: string[];
 };
 
 export type MenuCategory = {
@@ -14,23 +12,7 @@ export type MenuCategory = {
   items: MenuItem[];
 };
 
-const DEFAULT_SPICE_LEVELS: string[] = [
-  "甘口",
-  "普通",
-  "1辛",
-  "2辛",
-  "3辛",
-  "5辛",
-  "10辛",
-];
-
-const DEFAULT_OPTIONS: string[] = [
-  "ライス量変更",
-  "トッピング追加",
-];
-
 export const menuData: MenuCategory[] = [
-
   {
     id: "1",
     name: "肉類のカレー",
@@ -41,8 +23,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Pork curry",
         price: 646,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1293",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1294",
@@ -50,8 +30,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Mild pork curry",
         price: 646,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1294",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1307",
@@ -59,8 +37,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Beef curry",
         price: 794,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1307",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1617",
@@ -68,8 +44,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Stewed chicken curry",
         price: 934,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1617",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1782",
@@ -77,8 +51,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Fried chicken (5 pieces) curry",
         price: 951,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1782",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1301",
@@ -86,8 +58,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Hamburger (2 pieces) curry",
         price: 976,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1301",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1303",
@@ -95,8 +65,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Thin-sliced pork curry",
         price: 982,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1303",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1302",
@@ -104,8 +72,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Minced meat cutlet curry",
         price: 972,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1302",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1300",
@@ -113,8 +79,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Sausage (4 pieces) curry",
         price: 994,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1300",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1299",
@@ -122,8 +86,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Chicken cutlet curry",
         price: 994,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1299",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1298",
@@ -131,8 +93,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Lightly crisped chicken curry",
         price: 994,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1298",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1297",
@@ -140,8 +100,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Pork cutlet curry",
         price: 998,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1297",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1618",
@@ -149,8 +107,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Hand‐made“Tonkatsu”curry",
         price: 1192,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1618",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1800",
@@ -158,8 +114,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Gyu-suji nikomi (Stewed beef tendon) curry",
         price: 1132,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1800",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -173,8 +127,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Eggplant (6 pieces) curry",
         price: 826,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1780",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1315",
@@ -182,8 +134,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Spinach curry",
         price: 898,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1315",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1316",
@@ -191,8 +141,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Vegetable curry",
         price: 918,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1316",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -206,8 +154,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 845,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1838",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1327",
@@ -215,8 +161,6 @@ export const menuData: MenuCategory[] = [
         englishName: "CoCoICHI vegetarian curry",
         price: 683,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1327",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1676",
@@ -224,8 +168,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Runny omelet curry",
         price: 779,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1676",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1325",
@@ -233,8 +175,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Low carb curry",
         price: 725,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1325",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1324",
@@ -242,8 +182,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Natto (fermented soy beans)curry",
         price: 813,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1324",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1323",
@@ -251,8 +189,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Scrambled egg curry",
         price: 866,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1323",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1322",
@@ -260,8 +196,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Cheese curry",
         price: 910,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1322",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1781",
@@ -269,8 +203,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Cream croquette (with crab) (2 pieces) curry",
         price: 888,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1781",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1320",
@@ -278,8 +210,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Mushroom curry",
         price: 888,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1320",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1319",
@@ -287,8 +217,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Eggplant & spinach curry rice casserole",
         price: 817,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1319",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1318",
@@ -296,8 +224,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Hamburger curry rice casserole",
         price: 817,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1318",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -311,8 +237,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Fried fish (2 pieces) curry",
         price: 858,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1314",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1313",
@@ -320,8 +244,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Full of Asari clam curry",
         price: 858,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1313",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1312",
@@ -329,8 +251,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Squid curry",
         price: 910,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1312",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1311",
@@ -338,8 +258,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Stewed shrimp curry",
         price: 910,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1311",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1779",
@@ -347,8 +265,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Shrimp and Asari clam curry",
         price: 884,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1779",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1310",
@@ -356,8 +272,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Seafood curry",
         price: 1016,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1310",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -371,8 +285,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Hashed beef and rice",
         price: 896,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1853",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -386,8 +298,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 556,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1833",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1832",
@@ -395,8 +305,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 704,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1832",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1831",
@@ -404,8 +312,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 593,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1831",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1830",
@@ -413,8 +319,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 806,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1830",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1829",
@@ -422,8 +326,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 688,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1829",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1828",
@@ -431,8 +333,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 666,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1828",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1826",
@@ -440,8 +340,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 677,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1826",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1033",
@@ -449,8 +347,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 692,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1033",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1843",
@@ -458,8 +354,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 682,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1843",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1844",
@@ -467,8 +361,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 739,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1844",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1845",
@@ -476,8 +368,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 677,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1845",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1846",
@@ -485,8 +375,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 688,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1846",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1847",
@@ -494,8 +382,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 721,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1847",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1848",
@@ -503,8 +389,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 730,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1848",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1849",
@@ -512,8 +396,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 688,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1849",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -527,8 +409,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Allergen-free Cury",
         price: 464,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=68",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "67",
@@ -536,8 +416,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Allergen-free Cury",
         price: 232,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=67",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -551,8 +429,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Children's curry Hamburger",
         price: 456,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1018",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1247",
@@ -560,8 +436,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Children's curry Fried chicken",
         price: 456,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1247",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1248",
@@ -569,17 +443,14 @@ export const menuData: MenuCategory[] = [
         englishName: "Children's curry Hamburger & fried chicken",
         price: 550,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1248",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1249",
         name: "お子さまカレー クリームコロッケ（カニ入り）＆フライドチキン",
-        englishName: "Children's curry Cream croquette (with crab) & fried chicken",
+        englishName:
+          "Children's curry Cream croquette (with crab) & fried chicken",
         price: 550,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1249",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1014",
@@ -587,8 +458,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Mini Kids Curry",
         price: 352,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1014",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1013",
@@ -596,8 +465,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Mini Kids Curry with Nan Bread",
         price: 352,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1013",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "77",
@@ -605,8 +472,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Vegetable curry for children aged one year or more",
         price: 210,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=77",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "314",
@@ -614,8 +479,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 189,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=314",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "138",
@@ -623,8 +486,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 148,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=138",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
@@ -638,8 +499,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Curry udon",
         price: 850,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1704",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1709",
@@ -647,8 +506,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 960,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1709",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1708",
@@ -656,8 +513,6 @@ export const menuData: MenuCategory[] = [
         englishName: "Curry ramen",
         price: 890,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1708",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1707",
@@ -665,8 +520,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 1250,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1707",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1706",
@@ -674,8 +527,6 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 1000,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1706",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
       {
         id: "1705",
@@ -683,9 +534,12 @@ export const menuData: MenuCategory[] = [
         englishName: null,
         price: 1360,
         detailUrl: "https://www.ichibanya.co.jp/menu/detail.html?id=1705",
-        spiceLevels: DEFAULT_SPICE_LEVELS,
-        options: DEFAULT_OPTIONS,
       },
     ],
   },
-]
+];
+
+export { spiceLevels } from "./spiceLevels.ts";
+export { menuOptions } from "./options.ts";
+export type { SpiceLevel } from "./spiceLevels.ts";
+export type { MenuOption } from "./options.ts";
