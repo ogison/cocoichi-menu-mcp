@@ -1,42 +1,29 @@
 # cocoichi-menu-mcp
 
-CoCo壱番屋（カレーハウスCoCo壱）公式メニューブックをModel Context Protocol (MCP) サーバーとして提供するローカルツール。
+CoCo 壱番屋（カレーハウス CoCo 壱番屋）のメニューブックを Model Context Protocol (MCP) サーバーとして提供するローカルツールです。
 
-## セットアップ
+## 1. リポジトリのクローン
 
-```bash
-npm install
+```
+git clone https://github.com/your-account/cocoichi-menu-mcp.git
 ```
 
-## 起動
+## 2. Deno のインストール
 
-```bash
-npm run start
-```
+https://docs.deno.com/runtime/getting_started/installation/
 
-`@modelcontextprotocol/sdk` を利用した MCP サーバーが標準入出力上で起動し、`menu` テキストリソースを公開します。起動後に `modelcontextprotocol` が提供する `mcp` CLI や各種対応クライアントから `list-resources` / `read-resource` を実行すると、公開中のメニューが取得できます。アクセスのたびに標準出力へログが表示されます。
+## 3. MCP の設定
 
-### Deno 版の起動例
-
-```bash
-deno run --allow-read deno/server.ts --file path/to/menu.txt
-```
-
-メニューとして公開したいテキストファイルを `--file` オプションで指定してください。ファイルを読み込むために `--allow-read` 権限が必要です。
-
-## クライアント設定例
-
-`~/.config/modelcontext/mcp_servers/cocoichi-menu.json` に以下のような設定ファイルを配置すると、`mcp` CLI から `cocoichi-menu` サーバーを呼び出せます。
+特別な引数を指定しなくても、同梱されている `deno/menu.txt` をメニューとして公開します。
 
 ```json
 {
-  "command": "npm",
-  "args": [
-    "run",
-    "start",
-    "--"
-  ]
+  "servers": {
+    "cocoichi-menu-mcp": {
+      "type": "stdio",
+      "command": "C:\\Dev\\mcp\\cocoichi-menu-mcp\\src\\server.ts",
+      "args": []
+    }
+  }
 }
 ```
-
-必要に応じて `working_directory` や `env` などのオプションを追加してください。
