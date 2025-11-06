@@ -541,5 +541,7 @@ export const menuData: MenuCategory[] = [
 
 export { spiceLevels } from "./spiceLevels.ts";
 export { menuOptions } from "./options.ts";
+export { toppings } from "./toppings.ts";
 export type { SpiceLevel } from "./spiceLevels.ts";
 export type { MenuOption } from "./options.ts";
+export type { Topping } from "./toppings.ts";
