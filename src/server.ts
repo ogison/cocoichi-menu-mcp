@@ -7,7 +7,13 @@ import {
   ListToolsRequestSchema,
   Tool,
 } from "npm:@modelcontextprotocol/sdk@1.5.0/types.js";
-import { menuData, type MenuCategory, type MenuItem } from "../data/menu.ts";
+import {
+  menuData,
+  menuOptions,
+  spiceLevels,
+  type MenuCategory,
+  type MenuItem,
+} from "../data/menu.ts";
 
 const TOOLS: Tool[] = [
   {
@@ -60,7 +66,7 @@ const server = new Server(
       resources: {},
       tools: {},
     },
-  }
+  },
 );
 
 server.setRequestHandler(ListResourcesRequestSchema, () => ({
@@ -135,10 +141,10 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         name: match.item.name,
         category: match.category.name,
         price: match.item.price,
-        spiceLevels: match.item.spiceLevels,
-        options: match.item.options,
         englishName: match.item.englishName,
         detailUrl: match.item.detailUrl,
+        spiceLevels,
+        options: menuOptions,
       };
       return {
         content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
@@ -171,17 +177,14 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
 
       const results = menuData
         .flatMap((category) =>
-          category.items.map((item) => ({ category, item }))
+          category.items.map((item) => ({ category, item })),
         )
         .filter(({ category, item }) => {
           const matchesKeyword =
             item.name.toLowerCase().includes(normalizedKeyword) ||
             (item.englishName
               ? item.englishName.toLowerCase().includes(normalizedKeyword)
-              : false) ||
-            item.options.some((o) =>
-              o.toLowerCase().includes(normalizedKeyword)
-            );
+              : false);
           const matchesCategory = categoryFilter
             ? category.id.toLowerCase() === categoryFilter ||
               category.name.toLowerCase() === categoryFilter
@@ -198,8 +201,29 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
           detailUrl: item.detailUrl,
         }));
 
+      const optionMatches = menuOptions
+        .filter((option) => {
+          const normalizedName = option.name.toLowerCase();
+          const normalizedDescription = option.description.toLowerCase();
+          return (
+            normalizedName.includes(normalizedKeyword) ||
+            normalizedDescription.includes(normalizedKeyword)
+          );
+        })
+        .map((option) => ({
+          id: option.id,
+          name: option.name,
+          description: option.description,
+          priceDelta: option.priceDelta,
+        }));
+
       return {
-        content: [{ type: "text", text: JSON.stringify({ results }, null, 2) }],
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify({ results, optionMatches }, null, 2),
+          },
+        ],
         isError: false,
       };
     }
