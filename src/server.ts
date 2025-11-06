@@ -11,6 +11,7 @@ import {
   menuData,
   menuOptions,
   spiceLevels,
+  toppings,
   type MenuCategory,
   type MenuItem,
 } from "../data/menu.ts";
@@ -107,11 +108,18 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
           detailUrl: item.detailUrl,
         })),
       }));
+      const availableToppings = toppings.map((topping) => ({
+        id: topping.id,
+        name: topping.name,
+        price: topping.price,
+        description: topping.description,
+        limitedTime: topping.limitedTime ?? false,
+      }));
       return {
         content: [
           {
             type: "text",
-            text: JSON.stringify({ categories }, null, 2),
+            text: JSON.stringify({ categories, toppings: availableToppings }, null, 2),
           },
         ],
         isError: false,
@@ -145,6 +153,7 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         detailUrl: match.item.detailUrl,
         spiceLevels,
         options: menuOptions,
+        toppings,
       };
       return {
         content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
@@ -217,11 +226,33 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
           priceDelta: option.priceDelta,
         }));
 
+      const toppingMatches = toppings
+        .filter((topping) => {
+          const normalizedName = topping.name.toLowerCase();
+          const normalizedDescription = topping.description
+            ? topping.description.toLowerCase()
+            : "";
+          const matchesLimitedTime =
+            topping.limitedTime && normalizedKeyword === "期間限定";
+          return (
+            normalizedName.includes(normalizedKeyword) ||
+            normalizedDescription.includes(normalizedKeyword) ||
+            matchesLimitedTime
+          );
+        })
+        .map((topping) => ({
+          id: topping.id,
+          name: topping.name,
+          description: topping.description,
+          price: topping.price,
+          limitedTime: topping.limitedTime ?? false,
+        }));
+
       return {
         content: [
           {
             type: "text",
-            text: JSON.stringify({ results, optionMatches }, null, 2),
+            text: JSON.stringify({ results, optionMatches, toppingMatches }, null, 2),
           },
         ],
         isError: false,
