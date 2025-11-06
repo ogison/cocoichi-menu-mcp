@@ -10,6 +10,7 @@ import {
 import {
   menuData,
   menuOptions,
+  riceOptionPricing,
   sauceSelection,
   spiceLevels,
   toppings,
@@ -123,6 +124,7 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
             text: JSON.stringify(
               {
                 categories,
+                riceOptionPricing,
                 toppings: availableToppings,
                 sauceSelection,
               },
@@ -162,6 +164,7 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         detailUrl: match.item.detailUrl,
         spiceLevels,
         options: menuOptions,
+        riceOptionPricing,
         sauceSelection,
         toppings,
       };
@@ -262,7 +265,11 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         content: [
           {
             type: "text",
-            text: JSON.stringify({ results, optionMatches, toppingMatches }, null, 2),
+            text: JSON.stringify(
+              { results, optionMatches, toppingMatches, riceOptionPricing },
+              null,
+              2,
+            ),
           },
         ],
         isError: false,
