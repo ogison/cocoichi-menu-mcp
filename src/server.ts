@@ -10,6 +10,7 @@ import {
 import {
   menuData,
   menuOptions,
+  sauceSelection,
   spiceLevels,
   toppings,
   type MenuCategory,
@@ -119,7 +120,15 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         content: [
           {
             type: "text",
-            text: JSON.stringify({ categories, toppings: availableToppings }, null, 2),
+            text: JSON.stringify(
+              {
+                categories,
+                toppings: availableToppings,
+                sauceSelection,
+              },
+              null,
+              2,
+            ),
           },
         ],
         isError: false,
@@ -153,6 +162,7 @@ server.setRequestHandler(CallToolRequestSchema, (request: CallToolRequest) => {
         detailUrl: match.item.detailUrl,
         spiceLevels,
         options: menuOptions,
+        sauceSelection,
         toppings,
       };
       return {
