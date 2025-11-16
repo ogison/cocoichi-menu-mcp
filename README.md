@@ -21,16 +21,61 @@ https://docs.deno.com/runtime/getting_started/installation/
 
 ## 3. MCP の設定
 
-特別な引数を指定しなくても、同梱されている `deno/menu.txt` をメニューとして公開します。
+特別な引数を指定しなくても、リポジトリ内の `data/*.ts` に定義されているメニューデータをそのまま公開できます。クライアントごとの設定例は以下のとおりです。
+
+### Claude Desktop
+
+`%AppData%/Claude/mcp_config.json`（Windows）のような設定ファイルに以下を追記します。`command` と `args` の値は自分の環境に合わせて変更してください。
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "cocoichi-menu-mcp": {
-      "type": "stdio",
-      "command": "C:\\Dev\\mcp\\cocoichi-menu-mcp\\src\\server.ts",
-      "args": []
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-read",
+        "C:\\Dev\\mcp\\cocoichi-menu-mcp\\src\\server.ts"
+      ]
     }
   }
 }
 ```
+
+### Cursor
+
+`~/.cursor/mcp.json` に以下のような設定を追加します。パスの区切りや権限フラグは利用環境に合わせて変更してください。
+
+```json
+{
+  "mcpServers": {
+    "cocoichi-menu-mcp": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-read",
+        "/path/to/cocoichi-menu-mcp/src/server.ts"
+      ]
+    }
+  }
+}
+```
+
+### VS Code（Claude Dev 拡張）
+
+VS Code の設定（`settings.json`）に MCP サーバーを登録します。
+
+```json
+"claude.mcpServers": {
+  "cocoichi-menu-mcp": {
+    "command": "deno",
+    "args": [
+      "run",
+      "--allow-read",
+      "/path/to/cocoichi-menu-mcp/src/server.ts"
+    ]
+  }
+}
+```
+
+いずれのクライアントでも、必要に応じて `--allow-net` など追加の Deno 権限フラグを付けてください。
